@@ -18,8 +18,12 @@ def main() -> None:
             recipe_manager.view_recipes()
         elif choice == "3":
             recipe_manager.search_recipes()
+        elif choice == "4":
+            recipe_manager.edit_recipe()
         elif choice == "5":
             recipe_manager.delete_recipe()
+        elif choice == "6":
+            break
         else:
             print("Invalid choice. Try again.")
 

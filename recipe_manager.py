@@ -39,7 +39,7 @@ class RecipeManager():
         self.save_recipes()
         print(f"Recipe '{name}' added successfully!")
 
-# View all recipes
+    # View all recipes
     def view_recipes(self) -> None:
         if not self.recipes:
             print("No recipes found.")
@@ -63,6 +63,42 @@ class RecipeManager():
         print(f"Recipes matching '{query}':")
         for name, recipe in matches:
             print(f"- {name}")
+
+    # Edit a recipe
+    def edit_recipe(self) -> None:
+        name = input("Enter recipe title: ")
+        if name not in self.recipes:
+            print(f"Recipe '{name}' not found.")
+            return
+        recipe = self.recipes[name]
+        print(f"Editing recipe '{name}':")
+        ingredients = recipe["ingredients"]
+        print("Current ingredients:")
+        for i, ingredient in enumerate(ingredients, start=1):
+            print(f"{i}. {ingredient}")
+        print("Enter new ingredients (leave blank to finish):")
+        new_ingredients = []
+        while True:
+            ingredient = input(">> ")
+            if not ingredient:
+                break
+            new_ingredients.append(ingredient)
+        recipe["ingredients"] = new_ingredients or ingredients
+        instructions = recipe["instructions"]
+        print("Current instructions:")
+        for i, instruction in enumerate(instructions, start=1):
+            print(f"{i}. {instruction}")
+        print("Enter new instructions (leave blank to finish):")
+        new_instructions = []
+        while True:
+            instruction = input(">> ")
+            if not instruction:
+                break
+            new_instructions.append(instruction)
+        recipe["instructions"] = new_instructions or instructions
+        self.recipes[name] = {"ingredients": recipe['ingredients'], "instructions": recipe['instructions']}
+        self.save_recipes()
+        print(f"Recipe '{name}' updated successfully!")
 
 # Delete a recipe
     def delete_recipe(self) -> None:
