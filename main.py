@@ -16,6 +16,8 @@ def main() -> None:
             recipe_manager.add_recipe()
         elif choice == "2":
             recipe_manager.view_recipes()
+        elif choice == "3":
+            recipe_manager.search_recipes()
         elif choice == "5":
             recipe_manager.delete_recipe()
         else:

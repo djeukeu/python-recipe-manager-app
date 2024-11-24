@@ -48,6 +48,22 @@ class RecipeManager():
         for name, recipe in self.recipes.items():
             print(f"- {name}")
 
+    # Search for recipes
+    def search_recipes(self) -> None:
+        query = input("Enter search query: ")
+        matches = [
+            (name, recipe)
+            for name, recipe in self.recipes.items()
+            if query.lower() in name.lower()
+            or any(query.lower() in ingredient.lower() for ingredient in recipe["ingredients"])
+        ]
+        if not matches:
+            print(f"No recipes found for '{query}'.")
+            return
+        print(f"Recipes matching '{query}':")
+        for name, recipe in matches:
+            print(f"- {name}")
+
 # Delete a recipe
     def delete_recipe(self) -> None:
         name = input("Enter recipe title: ")
