@@ -39,7 +39,14 @@ class RecipeManager():
         self.save_recipes()
         print(f"Recipe '{name}' added successfully!")
 
-
+# View all recipes
+    def view_recipes(self) -> None:
+        if not self.recipes:
+            print("No recipes found.")
+            return
+        print("Available recipes:")
+        for name, recipe in self.recipes.items():
+            print(f"- {name}")
 
 # Delete a recipe
     def delete_recipe(self) -> None:

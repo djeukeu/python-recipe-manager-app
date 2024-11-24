@@ -14,7 +14,9 @@ def main() -> None:
         choice = input("Enter your choice (1-6): ")
         if choice == "1":
             recipe_manager.add_recipe()
-        if choice == "5":
+        elif choice == "2":
+            recipe_manager.view_recipes()
+        elif choice == "5":
             recipe_manager.delete_recipe()
         else:
             print("Invalid choice. Try again.")
